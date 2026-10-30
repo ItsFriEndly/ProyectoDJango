@@ -1,51 +1,21 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <title>Comercio Justo - {{ producto.nombre }}</title>
-    <meta name="description" content="Detalles del producto {{ producto.nombre }}.">
-    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
-</head>
-<body>
-    <header>
-        <img src="{% static 'img/logo_comercioJusto.png' %}" alt="Logo de Comercio Justo" width="120" height="120">
-        <h1>Comercio Justo</h1>
-        <nav>
-            <ul>
-                <li><a href="/appComercioJustoDjango/">Inicio</a></li>
-                <li><a href="/appComercioJustoDjango/principios/">Principios</a></li>
-                <li><a href="/appComercioJustoDjango/productos/">Productos</a></li>
-                <li><a href="/appComercioJustoDjango/categorias/">Categorías</a></li>
-                <li><a href="/appComercioJustoDjango/contacto/">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+{% extends "base.html" %}
 
-    <main>
-        <section>
-            <h2>{{ producto.nombre }}</h2>
-            <article>
-                <h2>{{ producto.nombre }}</h2>
-                <p><strong>Precio:</strong> {{ producto.precio }} €</p>
-                <p><strong>Categoría:</strong> <a href="{% url 'categoria_detalle' producto.categoria.id %}">{{ producto.categoria.nombre }}</a></p>
-                <p><strong>Certificaciones:</strong>
-                    {% for cert in producto.certificaciones.all %}
-                        {{ cert.nombre }}{% if not forloop.last %}, {% endif %}
-                    {% empty %}
-                        Ninguna
-                    {% endfor %}
-                </p>
-                <p><strong>Descripción:</strong></p>
-                <p>{{ producto.descripcion }}</p>
-            </article>
-            <p><a href="/appComercioJustoDjango/productos/">&larr; Volver al catálogo de productos</a></p>
-        </section>
-    </main>
+{% block title %}Comercio Justo - {{ producto.nombre }}{% endblock %}
 
-    <footer>
-        <p>Copyright 2026 Comercio Justo</p>
-    </footer>
-
-</body>
-</html>
+{% block content %}
+    <article>
+        <h2>{{ producto.nombre }}</h2>
+        <p><strong>Precio:</strong> {{ producto.precio }} €</p>
+        <p><strong>Categoría:</strong> <a href="{% url 'categoria_detalle' producto.categoria.id %}">{{ producto.categoria.nombre }}</a></p>
+        <p><strong>Certificaciones:</strong>
+            {% for cert in producto.certificaciones.all %}
+                {{ cert.nombre }}{% if not forloop.last %}, {% endif %}
+            {% empty %}
+                Ninguna
+            {% endfor %}
+        </p>
+        <p><strong>Descripción:</strong></p>
+        <p>{{ producto.descripcion }}</p>
+        <p><a href="/appComercioJustoDjango/productos/">&larr; Volver al catálogo de productos</a></p>
+    </article>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Comercio Justo{% endblock %}</title>
+    <meta name="description" content="Página web sobre el comercio justo: qué es, sus principios, productos y cómo participar.">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+
+    <header>
+        <img src="{% static 'img/logo_comercioJusto.png' %}" alt="Logo de Comercio Justo" width="120" height="120">
+        <h1>Comercio Justo</h1>
+        <nav>
+            <ul>
+                <li><a href="/appComercioJustoDjango/">Inicio</a></li>
+                <li><a href="/appComercioJustoDjango/principios/">Principios</a></li>
+                <li><a href="/appComercioJustoDjango/productos/">Productos</a></li>
+                <li><a href="/appComercioJustoDjango/categorias/">Categorías</a></li>
+                <li><a href="/appComercioJustoDjango/certificaciones/">Certificaciones</a></li>
+                <li><a href="/appComercioJustoDjango/contacto/">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Copyright 2026 Comercio Justo</p>
+    </footer>
+
+</body>
+</html>

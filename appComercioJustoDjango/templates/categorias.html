@@ -1,57 +1,29 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <title>Comercio Justo - Categorías</title>
-    <meta name="description" content="Categorías de productos de comercio justo.">
-    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
-</head>
-<body>
+{% extends "base.html" %}
 
-    <header>
-        <img src="{% static 'img/logo_comercioJusto.png' %}" alt="Logo de Comercio Justo" width="120" height="120">
-        <h1>Comercio Justo</h1>
-        <nav>
-            <ul>
-                <li><a href="/appComercioJustoDjango/">Inicio</a></li>
-                <li><a href="/appComercioJustoDjango/principios/">Principios</a></li>
-                <li><a href="/appComercioJustoDjango/productos/">Productos</a></li>
-                <li><a href="/appComercioJustoDjango/categorias/">Categorías</a></li>
-                <li><a href="/appComercioJustoDjango/contacto/">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+{% block title %}Comercio Justo - Categorías{% endblock %}
 
-    <main>
-        <section>
-            <h2>Categorías</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Categoría</th>
-                        <th>Descripción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for categoria in categorias %}
-                    <tr>
-                        <td><a href="{% url 'categoria_detalle' categoria.id %}">{{ categoria.nombre }}</a></td>
-                        <td>{{ categoria.descripcion }}</td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="2">No hay categorías disponibles.</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </section>
-    </main>
-
-    <footer>
-        <p>Copyright 2026 Comercio Justo</p>
-    </footer>
-
-</body>
-</html>
+{% block content %}
+    <section>
+        <h2>Categorías</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Categoría</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for categoria in categorias %}
+                <tr>
+                    <td><a href="{% url 'categoria_detalle' categoria.id %}">{{ categoria.nombre }}</a></td>
+                    <td>{{ categoria.descripcion }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="2">No hay categorías disponibles.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+{% endblock %}

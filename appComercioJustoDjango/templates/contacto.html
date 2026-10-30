@@ -1,40 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <title>Comercio Justo - Contacto</title>
-    <meta name="description" content="Formulario de contacto de la web de comercio justo.">
-    <link rel="stylesheet" href="/static/css/estilos.css">
-</head>
-<body>
+{% extends "base.html" %}
 
-    <header>
-        <img src="/static/img/logo_comercioJusto.png" alt="Logo de Comercio Justo" width="120" height="120">
-        <h1>Comercio Justo</h1>
-        <nav>
-            <ul>
-                <li><a href="/appComercioJustoDjango/">Inicio</a></li>
-                <li><a href="/appComercioJustoDjango/principios/">Principios</a></li>
-                <li><a href="/appComercioJustoDjango/productos/">Productos</a></li>
-                <li><a href="/appComercioJustoDjango/contacto/">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+{% block title %}Comercio Justo - Contacto{% endblock %}
 
-    <main>
-        <section>
-            <h2>Contacto</h2>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Enviar">
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p>Copyright 2026 Comercio Justo</p>
-    </footer>
-
-</body>
-</html>
+{% block content %}
+    <section>
+        <h2>Contacto</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.help_text %}
+                <p class="help">{{ field.help_text|safe }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <input type="submit" value="Enviar">
+        </form>
+    </section>
+{% endblock %}
