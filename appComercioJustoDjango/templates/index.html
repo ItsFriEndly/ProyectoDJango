@@ -1,32 +1,28 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Codificacion de caracteres utilizada -->
     <meta charset="utf-8">
-    <!-- Título de la página que aparecerá en la pestaña -->
     <title>Comercio Justo - Inicio</title>
-    <!-- Descripción de la página -->
-    <meta name="description" content="Página web sobre el comercio justo: qué es, sus principios, productos y cómo participar.">
-    <!-- Hoja de estilos CSS utilizada -->
-    <link rel="stylesheet" href="/static/css/estilos.css">
+    <meta name="description" content="Página web sobre el comercio justo: qué es, sus principios y sus productos.">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
 </head>
 <body>
 
-    <!-- Cabecera con el logotipo y el menú de navegación -->
     <header>
-        <img src="/static/img/logo_comercioJusto.png" alt="Logo de Comercio Justo" width="120" height="120">
+        <img src="{% static 'img/logo_comercioJusto.png' %}" alt="Logo de Comercio Justo" width="120" height="120">
         <h1>Comercio Justo</h1>
         <nav>
             <ul>
                 <li><a href="/appComercioJustoDjango/">Inicio</a></li>
                 <li><a href="/appComercioJustoDjango/principios/">Principios</a></li>
                 <li><a href="/appComercioJustoDjango/productos/">Productos</a></li>
+                <li><a href="/appComercioJustoDjango/categorias/">Categorías</a></li>
                 <li><a href="/appComercioJustoDjango/contacto/">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Contenido principal de la página -->
     <main>
         <article>
             <h2>Bienvenido a Comercio Justo</h2>
@@ -45,12 +41,29 @@
             </section>
 
             <section>
-                <h3>En esta web encontrarás</h3>
-                <ul>
-                    <li><a href="/appComercioJustoDjango/principios/">Los principios del comercio justo</a></li>
-                    <li><a href="/appComercioJustoDjango/productos/">Los productos más habituales</a></li>
-                    <li><a href="/appComercioJustoDjango/contacto/">Un formulario de contacto</a></li>
-                </ul>
+                <h3>El producto más barato de cada categoría</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for producto in destacados %}
+                        <tr>
+                            <td><a href="{% url 'categoria_detalle' producto.categoria.id %}">{{ producto.categoria.nombre }}</a></td>
+                            <td><a href="{% url 'producto_detalle' producto.id %}">{{ producto.nombre }}</a></td>
+                            <td>{{ producto.precio }} €</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3">No hay productos disponibles.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </section>
 
             <aside>
@@ -60,7 +73,6 @@
         </article>
     </main>
 
-    <!-- Pie de página -->
     <footer>
         <p>Copyright 2026 Comercio Justo</p>
     </footer>
