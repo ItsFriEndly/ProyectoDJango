@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+from .forms import ConsultaForm
 
 
 def index(request):
@@ -14,4 +16,11 @@ def productos(request):
 
 
 def contacto(request):
-    return render(request, 'contacto.html')
+    if request.method == 'POST':
+        form = ConsultaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('contacto')
+    else:
+        form = ConsultaForm()
+    return render(request, 'contacto.html', {'form': form})

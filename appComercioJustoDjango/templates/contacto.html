@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Codificacion de caracteres utilizada -->
     <meta charset="utf-8">
-    <!-- Título de la página que aparecerá en la pestaña -->
     <title>Comercio Justo - Contacto</title>
-    <!-- Descripción de la página -->
     <meta name="description" content="Formulario de contacto de la web de comercio justo.">
-    <!-- Hoja de estilos CSS utilizada -->
     <link rel="stylesheet" href="/static/css/estilos.css">
 </head>
 <body>
 
-    <!-- Cabecera con el logotipo y el menú de navegación -->
     <header>
         <img src="/static/img/logo_comercioJusto.png" alt="Logo de Comercio Justo" width="120" height="120">
         <h1>Comercio Justo</h1>
@@ -26,61 +21,17 @@
         </nav>
     </header>
 
-    <!-- Contenido principal de la página -->
     <main>
         <section>
             <h2>Contacto</h2>
             <form method="post">
-                <fieldset>
-                    <legend>Datos personales</legend>
-                    <p>
-                        <label for="nombre">Nombre y apellidos</label>
-                        <input type="text" name="nombre" id="nombre" required>
-                    </p>
-                    <p>
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" required>
-                    </p>
-                    <p>
-                        <label for="telefono">Teléfono</label>
-                        <input type="tel" name="telefono" id="telefono">
-                    </p>
-                </fieldset>
-
-                <fieldset>
-                    <legend>Tu consulta</legend>
-                    <p>¿Eres consumidor o productor?</p>
-                    <p>
-                        <input type="radio" name="perfil" id="consumidor" value="consumidor" checked>
-                        <label for="consumidor">Consumidor</label>
-                        <input type="radio" name="perfil" id="productor" value="productor">
-                        <label for="productor">Productor</label>
-                    </p>
-                    <p>
-                        <label for="interes">Producto de interés</label>
-                        <select name="interes" id="interes">
-                            <option value="cafe" selected>Café</option>
-                            <option value="cacao">Cacao</option>
-                            <option value="te">Té</option>
-                            <option value="azucar">Azúcar de caña</option>
-                        </select>
-                    </p>
-                    <p>
-                        <label for="mensaje">Mensaje</label>
-                        <textarea name="mensaje" id="mensaje" rows="6" cols="50"></textarea>
-                    </p>
-                </fieldset>
-
-                <p>
-                    <input type="checkbox" name="privacidad" id="privacidad" value="acepto" required>
-                    <label for="privacidad">Acepto la política de privacidad</label>
-                </p>
+                {% csrf_token %}
+                {{ form.as_p }}
                 <input type="submit" value="Enviar">
             </form>
         </section>
     </main>
 
-    <!-- Pie de página -->
     <footer>
         <p>Copyright 2026 Comercio Justo</p>
     </footer>

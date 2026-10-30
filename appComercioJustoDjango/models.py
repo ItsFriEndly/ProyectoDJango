@@ -1,6 +1,6 @@
 
 from django.db import models
-from django.core.validators import MinLengthValidator, MaxLengthValidator, RegexValidator
+from django.core.validators import MinLengthValidator, RegexValidator
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100, unique=True)
@@ -55,9 +55,8 @@ class Consulta(models.Model):
 
     nombre = models.CharField(max_length=100)
     correo_electronico = models.EmailField()
-    telefono = models.CharField(max_length=10, validators=[
+    telefono = models.CharField(max_length=10, blank=True, validators=[
         MinLengthValidator(9, message='El teléfono debe tener al menos 9 dígitos.'),
-        MaxLengthValidator(10, message='El teléfono no puede tener más de 10 dígitos.'),
         RegexValidator(regex=r'^\d+$', message='El teléfono debe contener únicamente números.')])
     privacidad = models.BooleanField(default=False)
     mensaje = models.TextField(blank=True, null=True)
