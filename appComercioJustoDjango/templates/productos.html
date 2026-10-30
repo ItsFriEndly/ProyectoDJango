@@ -37,29 +37,28 @@
                         <th>Producto</th>
                         <th>Origen</th>
                         <th>Precio</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% for producto in productos %}
                     <tr>
-                        <td>Café</td>
-                        <td>Colombia</td>
-                        <td>4.50 €</td>
+                        <td>
+                            <a href="{% url 'producto_detalle' producto.id %}">
+                                {{ producto.nombre }}
+                            </a>
+                        </td>
+                        <td>{{ producto.origen }}</td>
+                        <td>{{ producto.precio }} €</td>
+                        <td>
+                            <a href="{% url 'producto_detalle' producto.id %}">Ver detalle</a>
+                        </td>
                     </tr>
+                    {% empty %}
                     <tr>
-                        <td>Cacao</td>
-                        <td>Ghana</td>
-                        <td>3.20 €</td>
+                        <td colspan="4">No hay productos disponibles.</td>
                     </tr>
-                    <tr>
-                        <td>Té</td>
-                        <td>India</td>
-                        <td>2.80 €</td>
-                    </tr>
-                    <tr>
-                        <td>Azúcar de caña</td>
-                        <td>Paraguay</td>
-                        <td>2.10 €</td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </section>

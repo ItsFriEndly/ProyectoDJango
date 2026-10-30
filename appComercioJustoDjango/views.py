@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import ConsultaForm
+from .models import Producto
 
 
 def index(request):
@@ -12,7 +13,13 @@ def principios(request):
 
 
 def productos(request):
-    return render(request, 'productos.html')
+    productos = Producto.objects.all()
+    return render(request, 'productos.html', {'productos': productos})
+
+
+def producto_detalle(request, id):
+    producto = get_object_or_404(Producto, id=id)
+    return render(request, 'producto_detalle.html', {'producto': producto})
 
 
 def contacto(request):
