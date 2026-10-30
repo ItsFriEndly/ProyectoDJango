@@ -1,21 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8">
     <title>Comercio Justo - Productos</title>
-    <meta name="description" content="Productos habituales de comercio justo, su origen y su precio.">
-    <link rel="stylesheet" href="/static/css/estilos.css">
+    <meta name="description" content="Productos de comercio justo y su precio.">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+>>>>>>> a4e2db974d31ed498f212cc4b86f0d46c088cc98
 </head>
 <body>
 
     <header>
-        <img src="/static/img/logo_comercioJusto.png" alt="Logo de Comercio Justo" width="120" height="120">
+        <img src="{% static 'img/logo_comercioJusto.png' %}" alt="Logo de Comercio Justo" width="120" height="120">
         <h1>Comercio Justo</h1>
         <nav>
             <ul>
                 <li><a href="/appComercioJustoDjango/">Inicio</a></li>
                 <li><a href="/appComercioJustoDjango/principios/">Principios</a></li>
                 <li><a href="/appComercioJustoDjango/productos/">Productos</a></li>
+                <li><a href="/appComercioJustoDjango/categorias/">Categorías</a></li>
                 <li><a href="/appComercioJustoDjango/contacto/">Contacto</a></li>
             </ul>
         </nav>
@@ -24,12 +27,10 @@
     <main>
         <section>
             <h2>Productos de comercio justo</h2>
-            <p>Estos son algunos de los productos más habituales:</p>
             <table>
                 <thead>
                     <tr>
                         <th>Producto</th>
-                        <th>Origen</th>
                         <th>Precio</th>
                         <th>Acción</th>
                     </tr>
@@ -37,20 +38,13 @@
                 <tbody>
                     {% for producto in productos %}
                     <tr>
-                        <td>
-                            <a href="{% url 'producto_detalle' producto.id %}">
-                                {{ producto.nombre }}
-                            </a>
-                        </td>
-                        <td>{{ producto.origen }}</td>
+                        <td><a href="{% url 'producto_detalle' producto.id %}">{{ producto.nombre }}</a></td>
                         <td>{{ producto.precio }} €</td>
-                        <td>
-                            <a href="{% url 'producto_detalle' producto.id %}">Ver detalle</a>
-                        </td>
+                        <td><a href="{% url 'producto_detalle' producto.id %}">Ver detalle</a></td>
                     </tr>
                     {% empty %}
                     <tr>
-                        <td colspan="4">No hay productos disponibles.</td>
+                        <td colspan="3">No hay productos disponibles.</td>
                     </tr>
                     {% endfor %}
                 </tbody>
