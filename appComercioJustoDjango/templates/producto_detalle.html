@@ -2,18 +2,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Codificacion de caracteres utilizada -->
     <meta charset="utf-8">
-    <!-- Título de la página adaptado al producto -->
     <title>Comercio Justo - {{ producto.nombre }}</title>
-    <!-- Descripción de la página -->
-    <meta name="description" content="Detalles del producto {{ producto.nombre }}, su origen y precio.">
-    <!-- Hoja de estilos CSS utilizada -->
+    <meta name="description" content="Detalles del producto {{ producto.nombre }}.">
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
 </head>
 <body>
 
-    <!-- Cabecera con el logotipo y el menú de navegación -->
     <header>
         <img src="{% static 'img/logo_comercioJusto.png' %}" alt="Logo de Comercio Justo" width="120" height="120">
         <h1>Comercio Justo</h1>
@@ -22,35 +17,32 @@
                 <li><a href="/appComercioJustoDjango/">Inicio</a></li>
                 <li><a href="/appComercioJustoDjango/principios/">Principios</a></li>
                 <li><a href="/appComercioJustoDjango/productos/">Productos</a></li>
+                <li><a href="/appComercioJustoDjango/categorias/">Categorías</a></li>
                 <li><a href="/appComercioJustoDjango/contacto/">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Contenido principal de la página -->
     <main>
-        <section class="detalle-producto">
+        <section>
             <h2>{{ producto.nombre }}</h2>
-            
             <article>
-                <div class="info-producto">
-                    <p><strong>Precio:</strong> {{ producto.precio }} €</p>
-                    <p><strong>Categoria:</strong> {{ producto.categoria }}</p>
-                    <p><strong>Certificación:</strong> {{% for cert in producto.certificaciones.all %}
-                                                         {{ cert.nombre }}{% if not forloop.last %}, {% endif %}
-                                                        {% endfor %}}</p>
-                    <p><strong>Descripción:</strong></p>
-                    <p>{{ producto.descripcion }}</p>
-                </div>
+                <p><strong>Precio:</strong> {{ producto.precio }} €</p>
+                <p><strong>Categoría:</strong> <a href="{% url 'categoria_detalle' producto.categoria.id %}">{{ producto.categoria.nombre }}</a></p>
+                <p><strong>Certificaciones:</strong>
+                    {% for cert in producto.certificaciones.all %}
+                        {{ cert.nombre }}{% if not forloop.last %}, {% endif %}
+                    {% empty %}
+                        Ninguna
+                    {% endfor %}
+                </p>
+                <p><strong>Descripción:</strong></p>
+                <p>{{ producto.descripcion }}</p>
             </article>
-
-            <p style="margin-top: 20px;">
-                <a href="/appComercioJustoDjango/productos/">&larr; Volver al catálogo de productos</a>
-            </p>
+            <p><a href="/appComercioJustoDjango/productos/">&larr; Volver al catálogo de productos</a></p>
         </section>
     </main>
 
-    <!-- Pie de página -->
     <footer>
         <p>Copyright 2026 Comercio Justo</p>
     </footer>
