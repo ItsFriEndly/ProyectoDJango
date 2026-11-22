@@ -48,9 +48,11 @@
         <section>
             <h3>En esta web encontrarás</h3>
             <ul>
-                <li><a href="/appComercioJustoDjango/principios/">Los principios del comercio justo</a></li>
-                <li><a href="/appComercioJustoDjango/productos/">Los productos más habituales</a></li>
-                <li><a href="/appComercioJustoDjango/contacto/">Un formulario de contacto</a></li>
+                <li><a href="{% url 'principios' %}">Los principios del comercio justo</a></li>
+                <li><a href="{% url 'productos' %}">Los productos más habituales</a></li>
+                <li><a href="{% url 'categorias' %}">Las categorías de productos</a></li>
+                <li><a href="{% url 'certificaciones' %}">Las certificaciones de los productos</a></li>
+                <li><a href="{% url 'contacto' %}">Un formulario de contacto</a></li>
             </ul>
         </section>
 

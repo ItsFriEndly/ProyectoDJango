@@ -9,13 +9,13 @@
         <p><strong>Categoría:</strong> <a href="{% url 'categoria_detalle' producto.categoria.id %}">{{ producto.categoria.nombre }}</a></p>
         <p><strong>Certificaciones:</strong>
             {% for cert in producto.certificaciones.all %}
-                {{ cert.nombre }}{% if not forloop.last %}, {% endif %}
+                <a href="{% url 'certificacion_detalle' cert.id %}">{{ cert.nombre }}</a>{% if not forloop.last %}, {% endif %}
             {% empty %}
                 Ninguna
             {% endfor %}
         </p>
         <p><strong>Descripción:</strong></p>
         <p>{{ producto.descripcion }}</p>
-        <p><a href="/appComercioJustoDjango/productos/">&larr; Volver al catálogo de productos</a></p>
+        <p><a href="{% url 'productos' %}">&larr; Volver al catálogo de productos</a></p>
     </article>
 {% endblock %}

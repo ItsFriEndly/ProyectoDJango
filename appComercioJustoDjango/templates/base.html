@@ -14,12 +14,12 @@
         <h1>Comercio Justo</h1>
         <nav>
             <ul>
-                <li><a href="/appComercioJustoDjango/">Inicio</a></li>
-                <li><a href="/appComercioJustoDjango/principios/">Principios</a></li>
-                <li><a href="/appComercioJustoDjango/productos/">Productos</a></li>
-                <li><a href="/appComercioJustoDjango/categorias/">Categorías</a></li>
-                <li><a href="/appComercioJustoDjango/certificaciones/">Certificaciones</a></li>
-                <li><a href="/appComercioJustoDjango/contacto/">Contacto</a></li>
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="{% url 'principios' %}">Principios</a></li>
+                <li><a href="{% url 'productos' %}">Productos</a></li>
+                <li><a href="{% url 'categorias' %}">Categorías</a></li>
+                <li><a href="{% url 'certificaciones' %}">Certificaciones</a></li>
+                <li><a href="{% url 'contacto' %}">Contacto</a></li>
             </ul>
         </nav>
     </header>
