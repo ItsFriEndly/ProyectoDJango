@@ -1,0 +1,38 @@
+:root, html[data-theme="light"] {
+    --primary: #2e7d32;
+    --secondary: #1b5e20;
+    --accent: #f9a825;
+    --primary-fg: #fff;
+    --header-color: #fff;
+    --header-branding-color: #fff;
+    --header-bg: #1b5e20;
+    --header-link-color: #fff;
+    --breadcrumbs-bg: #388e3c;
+    --breadcrumbs-link-fg: #fff;
+    --link-fg: #2e7d32;
+    --link-hover-color: #1b5e20;
+    --link-selected-fg: #1b5e20;
+    --button-bg: #2e7d32;
+    --button-hover-bg: #1b5e20;
+    --default-button-bg: #f9a825;
+    --default-button-hover-bg: #f57f17;
+    --selected-row: #e8f5e9;
+}
+
+.admin-logo {
+    height: 32px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.admin-rol {
+    background: var(--accent);
+    color: #000;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+#header {
+    border-bottom: 4px solid var(--accent);
+}
