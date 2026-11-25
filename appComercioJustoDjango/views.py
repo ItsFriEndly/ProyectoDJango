@@ -24,13 +24,13 @@ class PrincipiosView(TemplateView):
 
 
 class ProductoListView(ListView):
-    model = Producto
+    queryset = Producto.objects.select_related('categoria')
     template_name = 'productos.html'
     context_object_name = 'productos'
 
 
 class ProductoDetailView(DetailView):
-    model = Producto
+    queryset = Producto.objects.select_related('categoria').prefetch_related('certificaciones')
     template_name = 'producto_detalle.html'
 
 
@@ -52,7 +52,7 @@ class CertificacionListView(ListView):
 
 
 class CertificacionDetailView(DetailView):
-    model = Certificacion
+    queryset = Certificacion.objects.prefetch_related('productos__categoria')
     template_name = 'certificacion_detalle.html'
 
 
