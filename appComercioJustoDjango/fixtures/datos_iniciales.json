@@ -1,0 +1,317 @@
+[
+{
+  "model": "appComercioJustoDjango.categoria",
+  "pk": 1,
+  "fields": {
+    "nombre": "Alimentacion",
+    "descripcion": "Productos alimentarios de comercio justo y consumo responsable."
+  }
+},
+{
+  "model": "appComercioJustoDjango.categoria",
+  "pk": 2,
+  "fields": {
+    "nombre": "Cafe e infusiones",
+    "descripcion": "Cafes, tes e infusiones procedentes de productores responsables."
+  }
+},
+{
+  "model": "appComercioJustoDjango.categoria",
+  "pk": 3,
+  "fields": {
+    "nombre": "Chocolate y dulces",
+    "descripcion": "Chocolates y dulces elaborados con ingredientes de origen responsable."
+  }
+},
+{
+  "model": "appComercioJustoDjango.categoria",
+  "pk": 4,
+  "fields": {
+    "nombre": "Ropa y complementos",
+    "descripcion": "Prendas y complementos fabricados con criterios eticos."
+  }
+},
+{
+  "model": "appComercioJustoDjango.categoria",
+  "pk": 5,
+  "fields": {
+    "nombre": "Hogar",
+    "descripcion": "Articulos para el hogar producidos de forma responsable."
+  }
+},
+{
+  "model": "appComercioJustoDjango.categoria",
+  "pk": 6,
+  "fields": {
+    "nombre": "Cosmetica natural",
+    "descripcion": "Productos de cuidado personal con ingredientes de origen natural."
+  }
+},
+{
+  "model": "appComercioJustoDjango.certificacion",
+  "pk": 1,
+  "fields": {
+    "nombre": "Fairtrade",
+    "descripcion": "Certificacion de comercio justo para productos y cadenas de suministro que cumplen sus criterios."
+  }
+},
+{
+  "model": "appComercioJustoDjango.certificacion",
+  "pk": 2,
+  "fields": {
+    "nombre": "Ecologico UE",
+    "descripcion": "Certificacion ecologica europea para productos agrarios y alimentarios que cumplen la normativa aplicable."
+  }
+},
+{
+  "model": "appComercioJustoDjango.certificacion",
+  "pk": 3,
+  "fields": {
+    "nombre": "GOTS",
+    "descripcion": "Norma para textiles fabricados con fibras ecologicas y criterios ambientales y sociales."
+  }
+},
+{
+  "model": "appComercioJustoDjango.certificacion",
+  "pk": 4,
+  "fields": {
+    "nombre": "FSC",
+    "descripcion": "Certificacion relacionada con el origen responsable de materiales forestales."
+  }
+},
+{
+  "model": "appComercioJustoDjango.certificacion",
+  "pk": 5,
+  "fields": {
+    "nombre": "COSMOS Organic",
+    "descripcion": "Norma de certificacion para cosmetica organica y natural."
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 1,
+  "fields": {
+    "nombre": "Cafe molido de cooperativa",
+    "descripcion": "Cafe de tueste medio, procedente de una cooperativa de pequenos productores.",
+    "precio": "7.50",
+    "categoria": 2,
+    "certificaciones": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 2,
+  "fields": {
+    "nombre": "Cafe en grano de origen",
+    "descripcion": "Cafe en grano con notas de cacao y frutos secos, de origen responsable.",
+    "precio": "9.20",
+    "categoria": 2,
+    "certificaciones": [
+      1
+    ]
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 3,
+  "fields": {
+    "nombre": "Te verde ecologico",
+    "descripcion": "Te verde de hojas seleccionadas, ideal para disfrutar de una infusion suave.",
+    "precio": "4.80",
+    "categoria": 2,
+    "certificaciones": [
+      2
+    ]
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 4,
+  "fields": {
+    "nombre": "Infusion de jengibre y limon",
+    "descripcion": "Mezcla de plantas y especias para preparar una infusion aromatica.",
+    "precio": "3.90",
+    "categoria": 2,
+    "certificaciones": []
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 5,
+  "fields": {
+    "nombre": "Chocolate negro 70%",
+    "descripcion": "Tableta de chocolate negro elaborada con cacao de proveedores responsables.",
+    "precio": "3.25",
+    "categoria": 3,
+    "certificaciones": [
+      1
+    ]
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 6,
+  "fields": {
+    "nombre": "Chocolate negro ecologico",
+    "descripcion": "Chocolate negro intenso elaborado con ingredientes de produccion ecologica.",
+    "precio": "3.75",
+    "categoria": 3,
+    "certificaciones": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 7,
+  "fields": {
+    "nombre": "Tableta de chocolate con almendras",
+    "descripcion": "Chocolate con almendras tostadas, pensado para disfrutar de un dulce especial.",
+    "precio": "4.10",
+    "categoria": 3,
+    "certificaciones": [
+      1
+    ]
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 8,
+  "fields": {
+    "nombre": "Galletas de avena",
+    "descripcion": "Galletas crujientes de avena para desayunos y meriendas.",
+    "precio": "2.80",
+    "categoria": 1,
+    "certificaciones": [
+      2
+    ]
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 9,
+  "fields": {
+    "nombre": "Arroz integral ecologico",
+    "descripcion": "Arroz integral para una alimentacion variada y responsable.",
+    "precio": "2.60",
+    "categoria": 1,
+    "certificaciones": [
+      2
+    ]
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 10,
+  "fields": {
+    "nombre": "Quinoa de comercio responsable",
+    "descripcion": "Quinoa versatil para ensaladas, guarniciones y platos principales.",
+    "precio": "4.50",
+    "categoria": 1,
+    "certificaciones": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 11,
+  "fields": {
+    "nombre": "Miel de pequenos productores",
+    "descripcion": "Miel de sabor intenso presentada en un tarro de vidrio reutilizable.",
+    "precio": "6.90",
+    "categoria": 1,
+    "certificaciones": []
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 12,
+  "fields": {
+    "nombre": "Camiseta de algodon ecologico",
+    "descripcion": "Camiseta basica de algodon, con diseno atemporal y produccion textil responsable.",
+    "precio": "18.90",
+    "categoria": 4,
+    "certificaciones": [
+      3
+    ]
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 13,
+  "fields": {
+    "nombre": "Bolsa de tela reutilizable",
+    "descripcion": "Bolsa resistente para reducir el uso de bolsas desechables.",
+    "precio": "6.50",
+    "categoria": 4,
+    "certificaciones": []
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 14,
+  "fields": {
+    "nombre": "Neceser de algodon organico",
+    "descripcion": "Neceser de tela para organizar productos de higiene y cuidado personal.",
+    "precio": "12.00",
+    "categoria": 4,
+    "certificaciones": [
+      3
+    ]
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 15,
+  "fields": {
+    "nombre": "Cuenco artesanal de madera",
+    "descripcion": "Cuenco decorativo de madera para el hogar. El origen certificado debe verificarse en el producto comercial real.",
+    "precio": "14.50",
+    "categoria": 5,
+    "certificaciones": []
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 16,
+  "fields": {
+    "nombre": "Cuaderno de papel certificado",
+    "descripcion": "Cuaderno para notas y apuntes, elaborado con papel de origen forestal responsable.",
+    "precio": "5.20",
+    "categoria": 5,
+    "certificaciones": [
+      4
+    ]
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 17,
+  "fields": {
+    "nombre": "Jabon vegetal artesanal",
+    "descripcion": "Jabon de uso diario elaborado con aceites vegetales y presentado sin plastico innecesario.",
+    "precio": "4.25",
+    "categoria": 6,
+    "certificaciones": []
+  }
+},
+{
+  "model": "appComercioJustoDjango.producto",
+  "pk": 18,
+  "fields": {
+    "nombre": "Crema facial de aloe vera",
+    "descripcion": "Crema hidratante con aloe vera para la rutina diaria de cuidado facial.",
+    "precio": "11.90",
+    "categoria": 6,
+    "certificaciones": [
+      5
+    ]
+  }
+}
+]

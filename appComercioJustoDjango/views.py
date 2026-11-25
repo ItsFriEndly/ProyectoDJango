@@ -1,58 +1,62 @@
-from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DetailView, ListView, TemplateView
 
 from .forms import ConsultaForm
 from .models import Categoria, Certificacion, Producto
 
 
-def index(request):
-    destacados = []
-    for categoria in Categoria.objects.all():
-        producto = categoria.productos.order_by('precio').first()
-        if producto:
-            destacados.append(producto)
-    return render(request, 'index.html', {'destacados': destacados})
+class IndexView(TemplateView):
+    template_name = 'index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        destacados = []
+        for categoria in Categoria.objects.all():
+            producto = categoria.productos.order_by('precio').first()
+            if producto:
+                destacados.append(producto)
+        context['destacados'] = destacados
+        return context
 
 
-def principios(request):
-    return render(request, 'principios.html')
+class PrincipiosView(TemplateView):
+    template_name = 'principios.html'
 
 
-def productos(request):
-    productos = Producto.objects.all()
-    return render(request, 'productos.html', {'productos': productos})
+class ProductoListView(ListView):
+    model = Producto
+    template_name = 'productos.html'
+    context_object_name = 'productos'
 
 
-def producto_detalle(request, pk):
-    producto = get_object_or_404(Producto, pk=pk)
-    return render(request, 'producto_detalle.html', {'producto': producto})
+class ProductoDetailView(DetailView):
+    model = Producto
+    template_name = 'producto_detalle.html'
 
 
-def categorias(request):
-    categorias = Categoria.objects.all()
-    return render(request, 'categorias.html', {'categorias': categorias})
+class CategoriaListView(ListView):
+    model = Categoria
+    template_name = 'categorias.html'
+    context_object_name = 'categorias'
 
 
-def categoria_detalle(request, pk):
-    categoria = get_object_or_404(Categoria, pk=pk)
-    return render(request, 'categoria_detalle.html', {'categoria': categoria})
+class CategoriaDetailView(DetailView):
+    model = Categoria
+    template_name = 'categoria_detalle.html'
 
 
-def certificaciones(request):
-    certificaciones = Certificacion.objects.all()
-    return render(request, 'certificaciones.html', {'certificaciones': certificaciones})
+class CertificacionListView(ListView):
+    model = Certificacion
+    template_name = 'certificaciones.html'
+    context_object_name = 'certificaciones'
 
 
-def certificacion_detalle(request, pk):
-    certificacion = get_object_or_404(Certificacion, pk=pk)
-    return render(request, 'certificacion_detalle.html', {'certificacion': certificacion})
+class CertificacionDetailView(DetailView):
+    model = Certificacion
+    template_name = 'certificacion_detalle.html'
 
 
-def contacto(request):
-    if request.method == 'POST':
-        form = ConsultaForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('contacto')
-    else:
-        form = ConsultaForm()
-    return render(request, 'contacto.html', {'form': form})
+class ContactoView(CreateView):
+    form_class = ConsultaForm
+    template_name = 'contacto.html'
+    success_url = reverse_lazy('contacto')
