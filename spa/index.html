@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SPA en Vue sobre comercio justo: productos, categorías y certificaciones.">
+    <title>Comercio Justo · SPA</title>
+    <link rel="icon" href="img/logo_comercioJusto.png">
+    <link rel="stylesheet" href="css/spa.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <a href="#/" class="marca">
+                <img src="img/logo_comercioJusto.png" alt="Logo de Comercio Justo" width="70" height="70">
+                <h1>Comercio Justo</h1>
+            </a>
+            <nav>
+                <ul>
+                    <li v-for="enlace in enlaces" :key="enlace.ruta">
+                        <a :href="'#' + enlace.ruta" :class="{ activo: seccionActiva === enlace.ruta }">{{ enlace.texto }}</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <p v-if="cargando" class="aviso">Cargando datos...</p>
+            <p v-else-if="error" class="aviso error">No se han podido cargar los datos: {{ error }}</p>
+            <transition v-else name="fundido" mode="out-in">
+                <component :is="vista.componente" v-bind="vista.props" :datos="datos" :key="rutaActual"></component>
+            </transition>
+        </main>
+
+        <footer>
+            <p>Copyright 2026 Comercio Justo · SPA desarrollada con Vue {{ versionVue }}</p>
+        </footer>
+    </div>
+
+    <script src="js/vue.global.prod.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #333333;
+    background-color: #f7f4ee;
+}
+
+h1, h2, h3 {
+    color: #2e6b30;
+}
+
+a {
+    color: #2e6b30;
+}
+
+a:hover {
+    color: #8b5a2b;
+}
+
+/* ===== Cabecera ===== */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 40px;
+    background-color: #2e6b30;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+}
+
+.marca img {
+    padding: 4px;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+.marca h1 {
+    margin: 0;
+    color: #ffffff;
+}
+
+nav {
+    margin-left: auto;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    display: block;
+    padding: 6px 14px;
+    border-radius: 6px;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a:hover,
+nav a.activo {
+    color: #2e6b30;
+    background-color: #ffffff;
+}
+
+/* ===== Contenido ===== */
+main {
+    max-width: 1100px;
+    min-height: 60vh;
+    margin: 0 auto;
+    padding: 20px 40px 40px;
+}
+
+.aviso {
+    padding: 30px;
+    text-align: center;
+}
+
+.error {
+    color: #b3261e;
+}
+
+.resumen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.resumen-item {
+    flex: 1;
+    min-width: 180px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.cifra {
+    display: block;
+    color: #2e6b30;
+    font-size: 2.4em;
+    font-weight: bold;
+}
+
+.rejilla {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.tarjeta {
+    display: block;
+    padding: 18px 20px;
+    border: 1px solid #e0d8c8;
+    border-radius: 10px;
+    color: inherit;
+    background-color: #ffffff;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+a.tarjeta:hover {
+    color: inherit;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(46, 107, 48, 0.15);
+}
+
+.tarjeta h3 {
+    margin: 6px 0;
+}
+
+.categoria {
+    color: #8b5a2b;
+    font-size: 0.85em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.precio {
+    margin: 0;
+    color: #2e6b30;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.precio.grande {
+    font-size: 1.8em;
+}
+
+.contador {
+    color: #777777;
+    font-size: 0.9em;
+}
+
+/* ===== Filtros ===== */
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filtros input,
+.filtros select,
+.filtros button {
+    padding: 8px 12px;
+    border: 1px solid #c8bfae;
+    border-radius: 6px;
+    font: inherit;
+    background-color: #ffffff;
+}
+
+.filtros input {
+    flex: 1;
+    min-width: 220px;
+}
+
+.boton-secundario {
+    color: #8b5a2b;
+    cursor: pointer;
+}
+
+/* ===== Detalle ===== */
+.detalle {
+    max-width: 700px;
+}
+
+.volver {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    list-style: none;
+}
+
+.etiqueta {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 14px;
+    color: #ffffff;
+    background-color: #2e6b30;
+    font-size: 0.9em;
+    text-decoration: none;
+}
+
+.etiqueta:hover {
+    color: #ffffff;
+    background-color: #8b5a2b;
+}
+
+/* ===== Acordeón ===== */
+.acordeon {
+    display: grid;
+    gap: 12px;
+}
+
+.acordeon-titulo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    border: none;
+    color: #2e6b30;
+    background: none;
+    font: inherit;
+    font-size: 1.15em;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+}
+
+/* ===== Pie ===== */
+footer {
+    padding: 10px;
+    color: #ffffff;
+    background-color: #2e6b30;
+    text-align: center;
+}
+
+/* ===== Transiciones ===== */
+.fundido-enter-active,
+.fundido-leave-active {
+    transition: opacity 0.2s ease;
+}
+
+.fundido-enter-from,
+.fundido-leave-to {
+    opacity: 0;
+}
+
+.lista-enter-active,
+.lista-leave-active {
+    transition: opacity 0.25s, transform 0.25s;
+}
+
+.lista-enter-from,
+.lista-leave-to {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+@media (max-width: 700px) {
+    header,
+    main {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    nav {
+        margin-left: 0;
+    }
+}

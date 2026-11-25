@@ -1,0 +1,236 @@
+{
+  "categorias": [
+    {
+      "id": 1,
+      "nombre": "Alimentacion",
+      "descripcion": "Productos alimentarios de comercio justo y consumo responsable."
+    },
+    {
+      "id": 2,
+      "nombre": "Cafe e infusiones",
+      "descripcion": "Cafes, tes e infusiones procedentes de productores responsables."
+    },
+    {
+      "id": 3,
+      "nombre": "Chocolate y dulces",
+      "descripcion": "Chocolates y dulces elaborados con ingredientes de origen responsable."
+    },
+    {
+      "id": 6,
+      "nombre": "Cosmetica natural",
+      "descripcion": "Productos de cuidado personal con ingredientes de origen natural."
+    },
+    {
+      "id": 5,
+      "nombre": "Hogar",
+      "descripcion": "Articulos para el hogar producidos de forma responsable."
+    },
+    {
+      "id": 4,
+      "nombre": "Ropa y complementos",
+      "descripcion": "Prendas y complementos fabricados con criterios eticos."
+    }
+  ],
+  "certificaciones": [
+    {
+      "id": 5,
+      "nombre": "COSMOS Organic",
+      "descripcion": "Norma de certificacion para cosmetica organica y natural."
+    },
+    {
+      "id": 2,
+      "nombre": "Ecologico UE",
+      "descripcion": "Certificacion ecologica europea para productos agrarios y alimentarios que cumplen la normativa aplicable."
+    },
+    {
+      "id": 4,
+      "nombre": "FSC",
+      "descripcion": "Certificacion relacionada con el origen responsable de materiales forestales."
+    },
+    {
+      "id": 1,
+      "nombre": "Fairtrade",
+      "descripcion": "Certificacion de comercio justo para productos y cadenas de suministro que cumplen sus criterios."
+    },
+    {
+      "id": 3,
+      "nombre": "GOTS",
+      "descripcion": "Norma para textiles fabricados con fibras ecologicas y criterios ambientales y sociales."
+    }
+  ],
+  "productos": [
+    {
+      "id": 9,
+      "nombre": "Arroz integral ecologico",
+      "descripcion": "Arroz integral para una alimentacion variada y responsable.",
+      "precio": 2.6,
+      "categoria": 1,
+      "certificaciones": [
+        2
+      ]
+    },
+    {
+      "id": 13,
+      "nombre": "Bolsa de tela reutilizable",
+      "descripcion": "Bolsa resistente para reducir el uso de bolsas desechables.",
+      "precio": 6.5,
+      "categoria": 4,
+      "certificaciones": []
+    },
+    {
+      "id": 2,
+      "nombre": "Cafe en grano de origen",
+      "descripcion": "Cafe en grano con notas de cacao y frutos secos, de origen responsable.",
+      "precio": 9.2,
+      "categoria": 2,
+      "certificaciones": [
+        1
+      ]
+    },
+    {
+      "id": 1,
+      "nombre": "Cafe molido de cooperativa",
+      "descripcion": "Cafe de tueste medio, procedente de una cooperativa de pequenos productores.",
+      "precio": 7.5,
+      "categoria": 2,
+      "certificaciones": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 12,
+      "nombre": "Camiseta de algodon ecologico",
+      "descripcion": "Camiseta basica de algodon, con diseno atemporal y produccion textil responsable.",
+      "precio": 18.9,
+      "categoria": 4,
+      "certificaciones": [
+        3
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Chocolate negro 70%",
+      "descripcion": "Tableta de chocolate negro elaborada con cacao de proveedores responsables.",
+      "precio": 3.25,
+      "categoria": 3,
+      "certificaciones": [
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Chocolate negro ecologico",
+      "descripcion": "Chocolate negro intenso elaborado con ingredientes de produccion ecologica.",
+      "precio": 3.75,
+      "categoria": 3,
+      "certificaciones": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 18,
+      "nombre": "Crema facial de aloe vera",
+      "descripcion": "Crema hidratante con aloe vera para la rutina diaria de cuidado facial.",
+      "precio": 11.9,
+      "categoria": 6,
+      "certificaciones": [
+        5
+      ]
+    },
+    {
+      "id": 16,
+      "nombre": "Cuaderno de papel certificado",
+      "descripcion": "Cuaderno para notas y apuntes, elaborado con papel de origen forestal responsable.",
+      "precio": 5.2,
+      "categoria": 5,
+      "certificaciones": [
+        4
+      ]
+    },
+    {
+      "id": 15,
+      "nombre": "Cuenco artesanal de madera",
+      "descripcion": "Cuenco decorativo de madera para el hogar. El origen certificado debe verificarse en el producto comercial real.",
+      "precio": 14.5,
+      "categoria": 5,
+      "certificaciones": []
+    },
+    {
+      "id": 8,
+      "nombre": "Galletas de avena",
+      "descripcion": "Galletas crujientes de avena para desayunos y meriendas.",
+      "precio": 2.8,
+      "categoria": 1,
+      "certificaciones": [
+        2
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Infusion de jengibre y limon",
+      "descripcion": "Mezcla de plantas y especias para preparar una infusion aromatica.",
+      "precio": 3.9,
+      "categoria": 2,
+      "certificaciones": []
+    },
+    {
+      "id": 17,
+      "nombre": "Jabon vegetal artesanal",
+      "descripcion": "Jabon de uso diario elaborado con aceites vegetales y presentado sin plastico innecesario.",
+      "precio": 4.25,
+      "categoria": 6,
+      "certificaciones": []
+    },
+    {
+      "id": 11,
+      "nombre": "Miel de pequenos productores",
+      "descripcion": "Miel de sabor intenso presentada en un tarro de vidrio reutilizable.",
+      "precio": 6.9,
+      "categoria": 1,
+      "certificaciones": []
+    },
+    {
+      "id": 14,
+      "nombre": "Neceser de algodon organico",
+      "descripcion": "Neceser de tela para organizar productos de higiene y cuidado personal.",
+      "precio": 12.0,
+      "categoria": 4,
+      "certificaciones": [
+        3
+      ]
+    },
+    {
+      "id": 10,
+      "nombre": "Quinoa de comercio responsable",
+      "descripcion": "Quinoa versatil para ensaladas, guarniciones y platos principales.",
+      "precio": 4.5,
+      "categoria": 1,
+      "certificaciones": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 7,
+      "nombre": "Tableta de chocolate con almendras",
+      "descripcion": "Chocolate con almendras tostadas, pensado para disfrutar de un dulce especial.",
+      "precio": 4.1,
+      "categoria": 3,
+      "certificaciones": [
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Te verde ecologico",
+      "descripcion": "Te verde de hojas seleccionadas, ideal para disfrutar de una infusion suave.",
+      "precio": 4.8,
+      "categoria": 2,
+      "certificaciones": [
+        2
+      ]
+    }
+  ]
+}
