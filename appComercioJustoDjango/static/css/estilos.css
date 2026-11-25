@@ -191,3 +191,14 @@ footer {
         margin-left: 0;
     }
 }
+
+.aviso-error {
+    display: block;
+    margin-top: 4px;
+    color: #b00020;
+    font-size: 0.9em;
+}
+
+.campo-error {
+    border-color: #b00020 !important;
+}

@@ -5,7 +5,7 @@
 {% block content %}
     <section>
         <h2>Contacto</h2>
-        <form method="post">
+        <form method="post" id="form-contacto" novalidate>
             {% csrf_token %}
             {{ form.non_field_errors }}
             {% for field in form %}
@@ -18,7 +18,13 @@
                 {% endif %}
             </div>
             {% endfor %}
+            <p id="form-contacto-aviso" class="aviso-error"></p>
             <input type="submit" value="Enviar">
         </form>
     </section>
+{% endblock %}
+
+{% block scripts %}
+    {% load static %}
+    <script src="{% static 'js/contacto.js' %}"></script>
 {% endblock %}

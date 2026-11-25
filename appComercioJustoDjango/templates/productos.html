@@ -5,6 +5,11 @@
 {% block content %}
     <section>
         <h2>Productos de comercio justo</h2>
+        <p>
+            <label for="buscador">Buscar producto:</label>
+            <input type="text" id="buscador" placeholder="Escribe el nombre de un producto" data-url="{% url 'productos_buscar' %}">
+        </p>
+        <p id="buscador-info"></p>
         <table>
             <thead>
                 <tr>
@@ -14,7 +19,7 @@
                     <th>Acción</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tabla-productos">
                 {% for producto in productos %}
                 <tr>
                     <td><a href="{% url 'producto_detalle' producto.id %}">{{ producto.nombre }}</a></td>
@@ -30,4 +35,9 @@
             </tbody>
         </table>
     </section>
+{% endblock %}
+
+{% block scripts %}
+    {% load static %}
+    <script src="{% static 'js/productos.js' %}"></script>
 {% endblock %}

@@ -1,4 +1,6 @@
-from django.urls import reverse_lazy
+from django.http import JsonResponse
+from django.urls import reverse, reverse_lazy
+from django.views import View
 from django.views.generic import CreateView, DetailView, ListView, TemplateView
 
 from .forms import ConsultaForm
@@ -27,6 +29,25 @@ class ProductoListView(ListView):
     queryset = Producto.objects.select_related('categoria')
     template_name = 'productos.html'
     context_object_name = 'productos'
+
+
+class ProductoBuscarView(View):
+    def get(self, request):
+        texto = request.GET.get('q', '').strip()
+        productos = Producto.objects.select_related('categoria').order_by('nombre')
+        if texto:
+            productos = productos.filter(nombre__icontains=texto)
+        datos = [
+            {
+                'nombre': producto.nombre,
+                'precio': str(producto.precio),
+                'categoria': producto.categoria.nombre,
+                'url': reverse('producto_detalle', args=[producto.id]),
+                'url_categoria': reverse('categoria_detalle', args=[producto.categoria.id]),
+            }
+            for producto in productos
+        ]
+        return JsonResponse({'productos': datos})
 
 
 class ProductoDetailView(DetailView):
