@@ -1,21 +1,144 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Comercio Justo - {{ producto.nombre }}{% endblock %}
 
+{% block meta_description %}{{ producto.descripcion|truncatewords:25 }}{% endblock %}
+
+{% block social_meta %}
+    <meta property="og:site_name" content="Comercio Justo">
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="{{ producto.nombre }} - Comercio Justo">
+    <meta property="og:description" content="{{ producto.descripcion|truncatewords:25 }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo_comercioJusto.png' %}">
+    <meta property="product:price:amount" content="{{ producto.precio|stringformat:'.2f' }}">
+    <meta property="product:price:currency" content="EUR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ producto.nombre }} - Comercio Justo">
+    <meta name="twitter:description" content="{{ producto.descripcion|truncatewords:25 }}">
+    <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo_comercioJusto.png' %}">
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "{{ producto.nombre|escapejs }}",
+  "description": "{{ producto.descripcion|escapejs }}",
+  "category": "{{ producto.categoria.nombre|escapejs }}",
+  "url": "{{ request.build_absolute_uri }}",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "EUR",
+    "price": "{{ producto.precio|stringformat:'.2f' }}",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ request.build_absolute_uri }}"
+  }
+}
+</script>
+{% endblock %}
+
 {% block content %}
-    <article>
-        <h2>{{ producto.nombre }}</h2>
-        <p><strong>Precio:</strong> {{ producto.precio }} €</p>
-        <p><strong>Categoría:</strong> <a href="{% url 'categoria_detalle' producto.categoria.id %}">{{ producto.categoria.nombre }}</a></p>
-        <p><strong>Certificaciones:</strong>
+    <article itemscope itemtype="https://schema.org/Product" typeof="Product">
+        <h2 itemprop="name" property="name">{{ producto.nombre }}</h2>
+
+        <p itemprop="offers" itemscope itemtype="https://schema.org/Offer" property="offers" typeof="Offer">
+            <strong>Precio:</strong>
+            <span itemprop="price" property="price" content="{{ producto.precio|stringformat:'.2f' }}">{{ producto.precio }}</span>
+            <meta itemprop="priceCurrency" content="EUR">
+            <meta property="priceCurrency" content="EUR"> €
+        </p>
+
+        <p>
+            <strong>Categoría:</strong>
+            <a href="{% url 'categoria_detalle' producto.categoria.id %}" itemprop="category" property="category">
+                {{ producto.categoria.nombre }}
+            </a>
+        </p>
+
+        <p>
+            <strong>Certificaciones:</strong>
             {% for cert in producto.certificaciones.all %}
-                <a href="{% url 'certificacion_detalle' cert.id %}">{{ cert.nombre }}</a>{% if not forloop.last %}, {% endif %}
+                <span itemprop="hasCertification" itemscope itemtype="https://schema.org/Certification" property="hasCertification" typeof="Certification">
+                    <a href="{% url 'certificacion_detalle' cert.id %}" itemprop="url" property="url">
+                        <span itemprop="name" property="name">{{ cert.nombre }}</span>
+                    </a>
+                </span>{% if not forloop.last %}, {% endif %}
             {% empty %}
                 Ninguna
             {% endfor %}
         </p>
+
         <p><strong>Descripción:</strong></p>
-        <p>{{ producto.descripcion }}</p>
+        <p itemprop="description" property="description">{{ producto.descripcion }}</p>
+        <section id="social-share-app"
+                 data-titulo="{{ producto.nombre }}"
+                 data-precio="{{ producto.precio }} €"
+                 data-url="{{ request.build_absolute_uri }}">
+            <h3>Compartir este producto</h3>
+            <button type="button" @click="compartirTwitter">Compartir en X (Twitter)</button>
+            <button type="button" @click="compartirFacebook">Compartir en Facebook</button>
+            <button type="button" @click="copiarEnlace">
+                <span v-if="!copiado">Copiar enlace</span>
+                <span v-else>¡Enlace copiado!</span>
+            </button>
+        </section>
+
         <p><a href="{% url 'productos' %}">&larr; Volver al catálogo de productos</a></p>
     </article>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        const shareContainer = document.getElementById('social-share-app');
+        if (shareContainer && typeof Vue !== 'undefined') {
+            const { createApp, ref } = Vue;
+
+            createApp({
+                setup() {
+                    const titulo = shareContainer.dataset.titulo;
+                    const precio = shareContainer.dataset.precio;
+                    const url = shareContainer.dataset.url;
+                    const copiado = ref(false);
+
+                    const abrirVentanaSocial = (shareUrl) => {
+                        window.open(shareUrl, '_blank', 'width=600,height=450,noopener,noreferrer');
+                    };
+
+                    const compartirTwitter = () => {
+                        const texto = encodeURIComponent(`Descubre ${titulo} (${precio}) en Comercio Justo:`);
+                        const encodedUrl = encodeURIComponent(url);
+                        abrirVentanaSocial(`https://twitter.com/intent/tweet?text=${texto}&url=${encodedUrl}`);
+                    };
+
+                    const compartirFacebook = () => {
+                        const encodedUrl = encodeURIComponent(url);
+                        abrirVentanaSocial(`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`);
+                    };
+
+                    const copiarEnlace = async () => {
+                        try {
+                            await navigator.clipboard.writeText(url);
+                            copiado.value = true;
+                            setTimeout(() => {
+                                copiado.value = false;
+                            }, 2500);
+                        } catch (error) {
+                            console.error('Error al copiar la URL:', error);
+                        }
+                    };
+
+                    return {
+                        copiado,
+                        compartirTwitter,
+                        compartirFacebook,
+                        copiarEnlace
+                    };
+                }
+            }).mount('#social-share-app');
+        }
+    </script>
 {% endblock %}

@@ -5,6 +5,30 @@
     <meta charset="utf-8">
     <title>{% block title %}Comercio Justo{% endblock %}</title>
     <meta name="description" content="Página web sobre el comercio justo: qué es, sus principios, productos y cómo participar.">
+    {% block social_meta %}
+    <meta property="og:site_name" content="Comercio Justo">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Comercio Justo">
+    <meta property="og:description" content="Página web sobre el comercio justo: qué es, sus principios, productos y cómo participar.">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo_comercioJusto.png' %}">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Comercio Justo">
+    <meta name="twitter:description" content="Página web sobre el comercio justo: qué es, sus principios, productos y cómo participar.">
+    <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo_comercioJusto.png' %}">
+    {% endblock %}
+    {% block structured_data %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Comercio Justo",
+      "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'index' %}",
+      "description": "Página web sobre el comercio justo: qué es, sus principios, productos y cómo participar."
+    }
+    </script>
+    {% endblock %}
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
 </head>
 <body>
@@ -32,6 +56,7 @@
         <p>Copyright 2026 Comercio Justo</p>
     </footer>
 
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     {% block scripts %}{% endblock %}
 </body>
 </html>
